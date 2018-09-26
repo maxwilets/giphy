@@ -1,0 +1,8 @@
+button {
+    font-family: 'bangers', cursive;
+    background-color: #14ffef;
+    font-size: 26px;
+}
+button:hover{
+    background-color: #1bb7ad;
+}

@@ -6,3 +6,7 @@ button {
 button:hover{
     background-color: #1bb7ad;
 }
+
+.favorite {
+    font-size: 12px;
+}

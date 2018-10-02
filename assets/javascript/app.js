@@ -1,19 +1,30 @@
 $(document).ready(function() {
     var topicAr = ["Adventure Time", "Steven Universe", "Venture Bros", "Over the Garden Wall", "King of the Hill", "X Men", "Gumball", "Chowder", "Flapjack", "FLCL"];
-  var dataAr = ["Adventure+Time", "Steven+Universe", "Venture+Bros", "Over+the+Garden+Wall", "King+of+the+Hill", "X+Men", "Gumball", "Chowder", "Flapjack", "FLCL"]
+ // var dataAr = ["Adventure+Time", "Steven+Universe", "Venture+Bros", "Over+the+Garden+Wall", "King+of+the+Hill", "X+Men", "Gumball", "Chowder", "Flapjack", "FLCL"]
+   
+    // console.log(parse(JSON.parse(localStorage.favGifs)))
+     
+  var funcAr= function() {
+    $('#searchTerm').trigger('reset');
+    $("#buttons").empty();
     for (i=0; i< topicAr.length; i++) {
-        $("#buttons").append("<button data-person='" +  dataAr[i] +"'>" +topicAr[i]+ "</button>");
        
+      $("#buttons").append("<button class='buttonz' data-person='" +  topicAr[i] +"'>" +topicAr[i]+ "</button>");
+     
 
-    };
-    apiKey = "&api_key=FNylGLwnk8dtDcWGsdnGC8UU6R7M9Il3&limit=10";
-    $("button").on("click", function(){
+  
+}
+ 
+
+      $(".buttonz").on("click", function(){
         console.log($(this));
         var toon = $(this).attr("data-person");
         console.log(toon);
+        var apiKey = "&api_key=FNylGLwnk8dtDcWGsdnGC8UU6R7M9Il3&limit=10";
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         toon + apiKey;
         console.log(queryURL);
+       $("#gifsAttack").empty();
        
 
         $.ajax({
@@ -23,7 +34,8 @@ $(document).ready(function() {
         .then(function(response){
            results=response.data;
            console.log(results);
-           for (i = 0; i < results.length; i++) {
+           for (i = 0; i < results.length; i++) 
+           {
                var gifDiv= $("<div>");
                gifDiv.addClass("gift")
                gifDiv.attr("data-state", "still");
@@ -31,7 +43,6 @@ $(document).ready(function() {
                var rating = results[i].rating;
 
                var p =$("<p>").text("Rating: " + rating);
-
                var image = $('<img class= "itsme">');
                image.attr("data-state", "still")
 
@@ -41,11 +52,13 @@ $(document).ready(function() {
 
                console.log(image);
                gifDiv.prepend(p);
-
                gifDiv.prepend(image);
                $("#gifsAttack").prepend(gifDiv);
 
            }
+     
+         
+          
            $(".itsme").on("click", function(){
             move = $(this).attr('data-move');
             notMove = $(this).attr('src');
@@ -69,10 +82,28 @@ $(document).ready(function() {
                 $(this).attr('data-move', notMove);
    
                 }
-            })
-        })
+            }); //it me on click closer
+           
+        }); //then closer
                
-        })
-    });
+        }) //buttonz on click closer
+    };
+     funcAr();
+     
+     $("#button").on('click', function(){
+      
+    
+ 
+        searchTerm = $('#searchTerm').val();
+      $('#searchTerm').val('');
+        topicAr.push(searchTerm);
+      
+        funcAr();
+       
+    
+     }
+    );
+    }
+);
 
    

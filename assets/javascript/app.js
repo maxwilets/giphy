@@ -20,7 +20,7 @@ $(document).ready(function() {
         console.log($(this));
         var toon = $(this).attr("data-person");
         console.log(toon);
-        var apiKey = "&api_key=FNylGLwnk8dtDcWGsdnGC8UU6R7M9Il3&limit=10";
+        var apiKey = "&api_key=FNylGLwnk8dtDcWGsdnGC8UU6R7M9Il3&limit=12";
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         toon + apiKey;
         console.log(queryURL);

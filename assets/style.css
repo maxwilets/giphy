@@ -10,3 +10,7 @@ button:hover{
 .favorite {
     font-size: 12px;
 }
+.itsme{
+    border: 4px solid black;
+    margin: 10px;
+}

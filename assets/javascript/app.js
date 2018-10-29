@@ -32,7 +32,7 @@ $(document).ready(function() {
             method: "GET"
         })
         .then(function(response){
-           results=response.data;
+           results=response.results;
            console.log(results);
            for (i = 0; i < results.length; i++) 
            {
